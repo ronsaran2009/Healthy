@@ -26,16 +26,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/height"
-                android:drawableLeft="@drawable/ic_Height"/>
+                android:drawableLeft="@drawable/ic_height"
+                android:id="@+id/bmi_height"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/weight"
-                android:drawableLeft="@drawable/ic_weight"/>
+                android:drawableLeft="@drawable/ic_weight"
+                android:id="@+id/bmi_weight"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/reg"/>
+                android:text="@string/cal"
+                android:id="@+id/bmi_cal"></Button>
 
             <TextView
                 android:layout_width="match_parent"
@@ -52,6 +55,7 @@
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textSize="30dp"
+                android:id="@+id/bmi_ans"
                 />
 
         </LinearLayout>

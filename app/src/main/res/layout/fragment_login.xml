@@ -4,7 +4,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
+
     <ScrollView
+
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
         <LinearLayout
@@ -29,6 +31,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/user_id"
         android:layout_gravity="center"
+        android:id="@+id/login_userid"
         />
     <EditText
         android:drawableLeft="@drawable/ic_action_pass"
@@ -37,12 +40,14 @@
         android:hint="@string/password"
         android:inputType="textPassword"
         android:layout_gravity="center"
+        android:id="@+id/login_password"
         />
 
     <Button
         android:text="@string/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/login_login_btn"
         />
 
     <TextView
@@ -52,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:textColor="@color/colorPrimary"
-        android:id="@+id/textView" />
+        android:id="@+id/login_register" />
 
         </LinearLayout>
     </ScrollView>

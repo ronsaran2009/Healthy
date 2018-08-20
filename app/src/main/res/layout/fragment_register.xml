@@ -25,26 +25,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/user_id"
-                android:drawableLeft="@drawable/ic_action_name"/>
+                android:drawableLeft="@drawable/ic_action_name"
+                android:id="@+id/reg_userId"/>
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/name"
-                android:drawableLeft="@drawable/ic_name"/>
+                android:drawableLeft="@drawable/ic_name"
+                android:id="@+id/reg_name"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/age"
-                android:drawableLeft="@drawable/ic_age"/>
+                android:drawableLeft="@drawable/ic_age"
+                android:id="@+id/reg_age"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
-                android:drawableLeft="@drawable/ic_action_pass"/>
+                android:drawableLeft="@drawable/ic_action_pass"
+                android:id="@+id/reg_password"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/reg"/>
+                android:text="@string/reg"
+                android:id="@+id/reg_register"/>
         </LinearLayout>
     </ScrollView>
 
