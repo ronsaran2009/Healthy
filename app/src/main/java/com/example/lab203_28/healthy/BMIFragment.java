@@ -1,9 +1,10 @@
 package com.example.lab203_28.healthy;
 
-import android.support.v4.app.Fragment;
+;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,21 @@ public class BMIFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initCalBtn();
+        initBackBtn();
     }
+    void initBackBtn(){
+        Button _backBtn = (Button) getView().findViewById(R.id.bmi_backBnt);
+        _backBtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+
+                    Log.d("USER", "GOTO MENU");
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuFragment()).commit();
+
+            }
+        });
+
+    }
+
     void initCalBtn(){
         Button _calBtn = (Button) getView().findViewById(R.id.bmi_cal);
         _calBtn.setOnClickListener(new View.OnClickListener(){

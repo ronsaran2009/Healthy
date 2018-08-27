@@ -12,4 +12,6 @@
     <string name="weight">weight(cm)</string>
     <string name="your_bmi">Your BMI</string>
     <string name="cal">Calculator</string>
+    <string name="add_weight">Add Weight</string>
+    <string name="back">Back</string>
 </resources>

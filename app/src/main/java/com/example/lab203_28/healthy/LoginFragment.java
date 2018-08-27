@@ -1,8 +1,10 @@
 package com.example.lab203_28.healthy;
 
-import android.support.v4.app.Fragment;
+
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,7 +53,7 @@ public class LoginFragment extends Fragment {
                     Log.d("USER", "USER OR PASSWORD IS EMPTY");
                 }else if (_userIdStr.equals("admin") && _passwordStr.equals("admin")){
                     Log.d("USER", "GOTO BMI");
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new BMIFragment()).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuFragment()).commit();
                 }
                 else{
                     Log.d("USER", "INVALTD USERNAME OR PASSWORD ");
@@ -65,7 +67,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("USER", "GOTO REGISTER");
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view,new RegisterFragment()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new RegisterFragment()).commit();
             }
         });
     }

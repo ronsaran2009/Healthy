@@ -21,6 +21,11 @@
             android:orientation="vertical"
             android:padding="35dp">
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/back"
+                android:id="@+id/bmi_backBnt"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -51,7 +56,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="26.55"
+                android:text=""
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textSize="30dp"
