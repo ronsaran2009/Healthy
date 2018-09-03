@@ -32,24 +32,18 @@ public class WeightFragment extends Fragment{
         super.onActivityCreated(savedInstanceState);
         initAdd_WeightBtn();
 
-        weights.add(new Weight("12 june 18", 29, "up"));
-        weights.add(new Weight("12 june 18", 29, "up"));
-        weights.add(new Weight("12 june 18", 29, "up"));
+        weights.add(new Weight("1 june 18", 29, "up"));
+        weights.add(new Weight("2 june 18", 21, "up"));
+        weights.add(new Weight("3 june 18", 26, "up"));
+
+        ListView _weightList = (ListView) getView().findViewById(R.id.weight_listview);
         final WeightAdaptor _weightAdapter = new WeightAdaptor(
                 getActivity(),
                 R.layout.weight_,
                 weights
         );
-        ListView _weightList = (ListView) getView().findViewById(R.id.weight_listview);
+
         _weightList.setAdapter(_weightAdapter);
-//        _weightList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
-//                Log.d("text" , "Click on  " + weights.get(i).getWeight());
-//
-//                _weightAdapter.notifyDataSetChanged();
-//            }
-//        });
 
 
 

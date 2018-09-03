@@ -29,9 +29,15 @@ public class WeightAdaptor extends ArrayAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View _row = LayoutInflater.from(context).inflate(R.layout.weight_,parent,false);
-        TextView _t1 = (TextView) _row.findViewById(R.id.Weight_textview);
-        Weight _w = weights.get(position);
-        _t1.setText(_w.date);
+        TextView _dateview = (TextView) _row.findViewById(R.id.Weight_dateviewobj);
+        TextView _weightview = (TextView) _row.findViewById(R.id.Weight_weightviewobj);
+        TextView _statusview = (TextView) _row.findViewById(R.id.Weight_statusviewobj);
+
+        Weight _w = this.weights.get(position);
+
+        _dateview.setText(_w.getDate());
+        _weightview.setText(_w.getWeight()+"");
+        _statusview.setText(_w.getStatus());
         return _row;
     }
 }
