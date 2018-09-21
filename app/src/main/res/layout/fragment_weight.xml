@@ -6,12 +6,13 @@
     <ScrollView
 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
         <LinearLayout
-            android:padding="35dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="35dp">
 
             <Button
                 android:id="@+id/weight_add_weightbnt"
@@ -19,14 +20,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_weight"
                 android:textAlignment="center" />
+
             <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/weight_listview"
-                ></ListView>
-
-
+                android:layout_width="match_parent"
+                android:layout_height="488dp"></ListView>
 
         </LinearLayout>
     </ScrollView>
+
+
 </LinearLayout>

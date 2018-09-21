@@ -24,35 +24,35 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/user_id"
-                android:drawableLeft="@drawable/ic_action_name"
-                android:id="@+id/reg_userId"/>
+                android:hint="@string/email"
+                android:drawableLeft="@drawable/ic_action_email"
+                android:id="@+id/reg_email"/>
+
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/name"
-                android:drawableLeft="@drawable/ic_name"
-                android:id="@+id/reg_name"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:drawableLeft="@drawable/ic_action_pass"
+            android:id="@+id/reg_password"
+                android:inputType="textPassword" />/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/age"
-                android:drawableLeft="@drawable/ic_age"
-                android:id="@+id/reg_age"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/password"
+                android:hint="@string/repassword"
                 android:drawableLeft="@drawable/ic_action_pass"
-                android:id="@+id/reg_password"/>
+                android:id="@+id/reg_repassword"
+                android:inputType="textPassword" />/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/reg"
                 android:id="@+id/reg_register"/>
+
         </LinearLayout>
     </ScrollView>
+
+
 
 
 </LinearLayout>

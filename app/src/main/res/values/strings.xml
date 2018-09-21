@@ -14,4 +14,6 @@
     <string name="cal">Calculator</string>
     <string name="add_weight">Add Weight</string>
     <string name="back">Back</string>
+    <string name="email">Email</string>
+    <string name="repassword">Re-Password</string>
 </resources>

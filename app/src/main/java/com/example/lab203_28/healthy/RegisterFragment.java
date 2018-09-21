@@ -2,6 +2,7 @@ package com.example.lab203_28.healthy;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,18 +13,28 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 /**
  * Created by LAB203_28 on 20/8/2561.
  */
 
+
+
 public class RegisterFragment extends Fragment{
+    private FirebaseAuth mailAuth;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_register, container, false);}
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        mailAuth = FirebaseAuth.getInstance();
         initRegisterBtn();
     }
     void initRegisterBtn(){
@@ -31,35 +42,77 @@ public class RegisterFragment extends Fragment{
         _regBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                EditText _userId = (EditText) getView().findViewById(R.id.reg_userId);
-                EditText _name = (EditText) getView().findViewById(R.id.reg_name);
+                EditText _email = (EditText) getView().findViewById(R.id.reg_email);
                 EditText _password = (EditText) getView().findViewById(R.id.reg_password);
-                EditText _age = (EditText) getView().findViewById(R.id.reg_age);
-                String _userIdStr = _userId.getText().toString();
-                String _nameStr = _name.getText().toString();
-                String _passwordStr = _password.getText().toString();
-                String _ageStr = _age.getText().toString();
-                if (_userIdStr.isEmpty() || _nameStr.isEmpty() || _passwordStr.isEmpty() || _ageStr.isEmpty()){
-                    Toast.makeText(
-                            getActivity(),
-                            "กรุณาระบุข้อมูลให้ครบถ้วน",
-                            Toast.LENGTH_SHORT
-                    ).show();
-                    Log.d("USER", "FIELD NAME IS EMPTY");
-                }else if (_userIdStr.equals("admin")){
-                    Log.d("USER", "USER ALREADY EXIST");
-                    Toast.makeText(
-                            getActivity(),
-                            "user นี้มีอยู่ในระบบแล้ว",
-                            Toast.LENGTH_SHORT
-                    ).show();
+                EditText _repassword = (EditText) getView().findViewById(R.id.reg_repassword);
+                String _emailStr = _email.getText().toString();
 
+                String _passwordStr = _password.getText().toString();
+                String _repasswordStr = _repassword.getText().toString();
+                if (_passwordStr.length() < 6){
+                    Toast.makeText(
+                            getActivity(),
+                            "Password ต้องมีความกว้างขั้นต่ำ 6 ตัวอักษร",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    Log.d("USER", "PASSWORD LENGHT < 6");
+                }else if (! _passwordStr.equals(_repasswordStr) ){
+
+                    Toast.makeText(
+                            getActivity(),
+                            "Password ไม่ตรงกัน",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    Log.d("USER", "PASSWORD IS NOT EXIST");
                 }
                 else{
-                    Log.d("USER", "GOTO BMI");
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new BMIFragment()).commit();
+
+
+
+                    mailAuth.createUserWithEmailAndPassword(_emailStr,_passwordStr).addOnSuccessListener(new OnSuccessListener<AuthResult>(){
+                        public void onSuccess(AuthResult authResult) {
+                            sendVerifiedEmail(authResult.getUser());
+                            mailAuth.signOut();
+                            Log.d("USER", "GOTO login");
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LoginFragment()).commit();
+
+                        }
+                        }).addOnFailureListener(new OnFailureListener(){
+                            public void onFailure(Exception e){
+                                Toast.makeText(
+                                        getActivity(),
+                                        "ERROR : " + e.getMessage(),
+                                        Toast.LENGTH_SHORT
+                                ).show();
+                                Log.d("USER", "ERROR : " + e.getMessage());
+                                                                                                              }
+                     });
+
+                    //
                 }
+
             }
         });
     }
+
+
+    void sendVerifiedEmail(FirebaseUser _user){
+        _user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("USER", "SEND VERIFIED EMAIL");
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(
+                        getActivity(),
+                        "ERROR : " + e.getMessage(),
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+        });
+    }
+
 }

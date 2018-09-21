@@ -12,11 +12,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.lab203_28.healthy.Weight.WeightFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
 
 public class MenuFragment extends Fragment{
+    FirebaseAuth _auth;
     ArrayList<String> _menu = new ArrayList<>();
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -24,7 +26,9 @@ public class MenuFragment extends Fragment{
         _menu.add("BMI");
         _menu.add("Weight");
         _menu.add("Setup");
+        _menu.add("sing out");
 
+        _auth = FirebaseAuth.getInstance();
 
         final ArrayAdapter<String> _menuAdapter = new ArrayAdapter<>(
          getActivity(),
@@ -46,6 +50,11 @@ public class MenuFragment extends Fragment{
                 else if (_menu.get(i).equals("Weight")){
                     Log.d("USER", "GOTO Weight");
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new WeightFragment()).commit();
+                }
+                else if (_menu.get(i).equals("sing out")){
+                    _auth.signOut();
+                    Log.d("USER", "SING OUT GOTO LOGIN");
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LoginFragment()).commit();
                 }
             }
         });
