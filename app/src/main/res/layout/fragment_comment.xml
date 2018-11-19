@@ -12,9 +12,9 @@
             android:id="@+id/comment_btn_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Back"
-            android:textColor="#FFFFFF"
-            android:background="@color/colorPrimaryDark"/>
+            android:text="@string/back"></Button>
+
+
 
         <ListView
             android:id="@+id/comment_list"
