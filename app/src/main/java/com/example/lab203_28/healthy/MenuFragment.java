@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.lab203_28.healthy.Sleep.SleepFragment;
 import com.example.lab203_28.healthy.Weight.WeightFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -25,15 +26,17 @@ public class MenuFragment extends Fragment{
         super.onActivityCreated(savedInstanceState);
         _menu.add("BMI");
         _menu.add("Weight");
+        _menu.add("Sleep");
+        _menu.add("Post");
         _menu.add("Setup");
-        _menu.add("sing out");
+        _menu.add("Sing out");
 
         _auth = FirebaseAuth.getInstance();
 
         final ArrayAdapter<String> _menuAdapter = new ArrayAdapter<>(
-         getActivity(),
-         android.R.layout.simple_list_item_1,
-         _menu
+                getActivity(),
+                android.R.layout.simple_list_item_1,
+                _menu
         );
         ListView _menuList = (ListView) getView().findViewById(R.id.menu_list);
         _menuList.setAdapter(_menuAdapter);
@@ -51,7 +54,15 @@ public class MenuFragment extends Fragment{
                     Log.d("USER", "GOTO Weight");
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new WeightFragment()).commit();
                 }
-                else if (_menu.get(i).equals("sing out")){
+                else if (_menu.get(i).equals("Sleep")){
+                    Log.d("USER", "GOTO SLEEP");
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new SleepFragment()).commit();
+                }
+                else if (_menu.get(i).equals("Post")){
+                    Log.d("USER", "GOTO Post");
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new PostFragment()).commit();
+                }
+                else if (_menu.get(i).equals("Sing out")){
                     _auth.signOut();
                     Log.d("USER", "SING OUT GOTO LOGIN");
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new LoginFragment()).commit();
