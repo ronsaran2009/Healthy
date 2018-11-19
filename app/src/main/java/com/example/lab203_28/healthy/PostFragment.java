@@ -29,10 +29,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class PostFragment extends Fragment {
-
     String result;
     JSONArray jsonArray;
-    OkHttpClient client = new OkHttpClient();
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_post, container, false);
@@ -43,13 +42,8 @@ public class PostFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         initbackbnt();
 
-        String url = "https://jsonplaceholder.typicode.com/ posts";
 
-        try {
-            getRestAPI(url);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        initRestAPI();
 
     }
     void initRestAPI()
@@ -117,5 +111,15 @@ public class PostFragment extends Fragment {
             }
         };
         task.execute();
+    }
+    void initbackbnt(){
+        Button _back =  getView().findViewById(R.id.post_back);
+        _back.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d("POST", "GOTO Menu");
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new MenuFragment()).commit();
+            }
+        });
     }
 }

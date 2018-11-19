@@ -4,17 +4,17 @@
     android:layout_height="match_parent">
 
 
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="20dp"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/post_back"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/back" />
-        <LinearLayout
+            <Button
+                android:id="@+id/post_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/back" />
 
         <ListView
             android:id="@+id/post_list"
